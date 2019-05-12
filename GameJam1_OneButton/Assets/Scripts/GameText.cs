@@ -12,7 +12,6 @@ public class GameText : MonoBehaviour
     private bool clicker = false;
     private bool start = false;
 
-    private int clicks = 0;
     private int finalScore;
     private int highScore;
 
@@ -23,7 +22,7 @@ public class GameText : MonoBehaviour
     
     private void Update(){
         if(start){
-            gametext.text = "Get ready to pay respects in " + timetogo.ToString("F2") + " seconds";
+            gametext.text = "Wait for: " + timetogo.ToString("F2") + " seconds";
             timetogo -= Time.deltaTime;
             if(timetogo <= 0){
                 gametext.text = "";
@@ -32,7 +31,7 @@ public class GameText : MonoBehaviour
         }
 
         if(holding){
-            gametext.text = "Press F to pay respects: " + timetogo.ToString("F2") + " seconds";
+            gametext.text = "Hold F!\n" + timetogo.ToString("F2") + " seconds";
             timetogo -= Time.deltaTime;
             if(timetogo <= 0){
                 gametext.text = "";
@@ -40,7 +39,7 @@ public class GameText : MonoBehaviour
             }
         }
         if(notholding){
-            gametext.text = "Stop Respecting within " + timetogo.ToString("F2") + " seconds";
+            gametext.text = "Stop Holding F!\n" + timetogo.ToString("F2") + " seconds";
             timetogo -= Time.deltaTime;
             if(timetogo <= 0){
                 gametext.text = "";
@@ -48,10 +47,7 @@ public class GameText : MonoBehaviour
             }
         }
         if(clicker){
-            gametext.text = "Press F 5 times to quick respect: " + timetogo.ToString("F2") + " seconds\nYou respected " + clicks + " times";
-            if(Input.GetKeyDown(KeyCode.F)){
-                clicks++;
-            }
+            gametext.text = "Press F!\n" + timetogo.ToString("F2") + " seconds";
             timetogo -= Time.deltaTime;
             if(timetogo <= 0){
                 gametext.text = "";
@@ -73,7 +69,6 @@ public class GameText : MonoBehaviour
     public void Clicker(float _seconds){
         timetogo = _seconds;
         clicker = true;
-        clicks = 0;
     }
 
     public void InfoDisplay(string what){

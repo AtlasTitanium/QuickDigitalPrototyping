@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3450892995643026087
 Transform:
@@ -4838,16 +4838,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3450892995643026087}
     m_Modifications:
-    - target: {fileID: 4922065944551393436, guid: 29c56ccd98811f249ba296ff626587c3,
-        type: 3}
-      propertyPath: m_Name
-      value: Point Light
-      objectReference: {fileID: 0}
-    - target: {fileID: 4922065944551393436, guid: 29c56ccd98811f249ba296ff626587c3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4575782381047016692, guid: 29c56ccd98811f249ba296ff626587c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4901,6 +4891,21 @@ PrefabInstance:
     - target: {fileID: 4575782381047016692, guid: 29c56ccd98811f249ba296ff626587c3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922065944551393436, guid: 29c56ccd98811f249ba296ff626587c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Point Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922065944551393436, guid: 29c56ccd98811f249ba296ff626587c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922065944551393436, guid: 29c56ccd98811f249ba296ff626587c3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
