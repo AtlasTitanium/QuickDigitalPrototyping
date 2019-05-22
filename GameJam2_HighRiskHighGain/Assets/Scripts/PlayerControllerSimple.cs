@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PlayerControllerSimple : MonoBehaviour
 {
-    public float jumpSpeed;
+    public float jumpStrenght;
+    public float superJumpStrenght;
     public Camera cam;
     public Camera SecondCam;
     public GameObject landingPlane;
     public LayerMask groundLayer;
+    public LayerMask platformLayer;
     public GameObject canvas;
+    public PlatformGenerator platformGenerator;
 
     private Rigidbody rb;
     private bool canJump = true;
     private GameObject ground;
+    private bool SuperJump = false;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
@@ -27,8 +31,10 @@ public class PlayerControllerSimple : MonoBehaviour
 
         Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
         RaycastHit hit;
+        if (Physics.Raycast (ray, out hit, Mathf.Infinity, platformLayer)) {
+            landingPlane.transform.position = new Vector3(hit.point.x, hit.point.y+0.1f, hit.point.z);
+        }   
         if (Physics.Raycast (ray, out hit, Mathf.Infinity, groundLayer)) {
-            landingPlane.transform.position = new Vector3(hit.point.x, hit.point.y + 0.1f, hit.point.z);
             playerPosX = hit.point.x;
             playerPosZ = hit.point.z;
         }   
@@ -37,7 +43,12 @@ public class PlayerControllerSimple : MonoBehaviour
         //Jump
         if(Input.GetAxis("Jump") > 0.1f && canJump){
             Debug.Log("Jump");
-            rb.AddForce(transform.up * jumpSpeed, ForceMode.Impulse);
+            if(SuperJump){
+                rb.AddForce(transform.up * superJumpStrenght, ForceMode.Impulse);
+                SuperJump = false;
+            } else {
+                rb.AddForce(transform.up * jumpStrenght, ForceMode.Impulse);
+            }
             canJump = false;
         }
 
@@ -48,7 +59,21 @@ public class PlayerControllerSimple : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        canJump = true;
+        if(collision.gameObject.GetComponent<PlatFormInit>()){
+            PlatFormInit PFT = collision.gameObject.GetComponent<PlatFormInit>();
+            if(PFT.AutoJump){
+                Debug.Log("Jump");
+                rb.AddForce(transform.up * jumpStrenght, ForceMode.Impulse);
+                canJump = false;
+            } else if(PFT.SuperJumpPad){
+                SuperJump = true;
+                canJump = true;
+            } else {
+                canJump = true;
+            }
+        } else {
+            canJump = true;
+        }
     }
 
     void OnCollisionExit(Collision other)
