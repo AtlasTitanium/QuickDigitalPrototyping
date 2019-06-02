@@ -5355,18 +5355,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e287732eeafaa7b4395ccace2affda8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  safety: 1
   scoreText: {fileID: 870654807}
   parentEnviroment: {fileID: 766565623}
   platformPrefabs:
   - {fileID: 3368415116225864636, guid: 89a2be0d69d27a1469bff4773ac04b38, type: 3}
   - {fileID: 3368415116225864636, guid: 52b1552a7b5e61b4bb6758b75dbd6f87, type: 3}
   - {fileID: 3368415116225864636, guid: 11b7d249836b27a48a4237cc9f2eec4a, type: 3}
-  platformChances: 500000000500000014000000
+  platformChances: 50000000050000000a000000
   groundPrefab: {fileID: 4439566089489067924, guid: 6922b05790adc4546ab499f67916c1be,
     type: 3}
   lamps: {fileID: 980481199999683787, guid: 38302332dc992734097d728f969c36d6, type: 3}
   currentLava: {fileID: 1251634222}
-  levelHeight: 1000
   levelWidthAndLenght: 25
   platformHeight: 4
   platformWidhtAndLenght: 8
@@ -5683,7 +5683,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press enter to restart
+  m_Text: 'Press enter to restart
+
+    Press escape to return to start'
 --- !u!222 &1529787450
 CanvasRenderer:
   m_ObjectHideFlags: 0

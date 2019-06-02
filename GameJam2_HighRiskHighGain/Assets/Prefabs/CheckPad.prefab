@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3368415116225864626}
   - component: {fileID: 3368415116225864625}
   m_Layer: 9
-  m_Name: Platform
+  m_Name: Platform 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,4 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3778ca94a956c1b42b9f8a5fa2ba48a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleDist: 4
+  SuperJumpPad: 0
+  CheckPoint: 1
+  AutoJump: 0
+  platformGenerator: {fileID: 0}
+  lava: {fileID: 0}

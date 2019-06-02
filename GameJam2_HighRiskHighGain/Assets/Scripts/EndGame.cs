@@ -10,5 +10,8 @@ public class EndGame : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            SceneManager.LoadScene("GameStart");
+        }
     }
 }
