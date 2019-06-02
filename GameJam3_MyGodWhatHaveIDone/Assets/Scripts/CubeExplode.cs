@@ -16,6 +16,7 @@ public class CubeExplode : MonoBehaviour
     public float explosionUpward = 0.4f;
 
     private float cubeSize = 0.2f;
+    private bool active = false;
 
     public void ShootCube() {
         cubeSize = transform.localScale.x / cubesInRow;
@@ -24,12 +25,15 @@ public class CubeExplode : MonoBehaviour
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
 
+        active = true;
     }
 
     void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == EnviromentLayer) {
-            explode();
+    {   
+        if(active){
+            if (collision.gameObject.layer == EnviromentLayer) {
+                explode();
+            }
         }
     }
 
@@ -69,6 +73,7 @@ public class CubeExplode : MonoBehaviour
         GameObject piece;
         piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
         piece.GetComponent<Renderer>().material = tinyCubeMat;
+        piece.layer = 4;
 
         //set piece position and scale
         piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
